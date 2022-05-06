@@ -17,7 +17,7 @@ class CreateLanguagesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('symbol');
-            $table->string('icon_url');
+            $table->string('icon_url')->nullable();
         });
     }
 

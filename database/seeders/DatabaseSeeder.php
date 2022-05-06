@@ -13,6 +13,47 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        /**
+         *  Seed users
+         *      !! Table <users> will be cleared
+         */
+        $this->call(UserSeeder::class);
+
+        /**
+         *  Seed default game
+         *      !! Table <games> will be cleared
+         */
+        $this->call(GameSeeder::class);
+
+        /**
+         *  Seed main languages
+         *      !! Table <languages> will be cleared
+         */
+        $this->call(LanguageSeeder::class);
+
+        /**
+         *  Seed default team
+         *      !! Table <teams> will be cleared
+         *      master group will be created with single user (id = 1)
+         */
+        $this->call(TeamSeeder::class);
+
+        /**
+         *  Seed currencies
+         *      !! Table <currencies> will be cleared
+         */
+        $this->call(CurrencySeeder::class);
+
+        /**
+         *  Seed timezones
+         *      !! Table <timezones> will be cleared
+         */
+        $this->call(TimezoneSeeder::class);
+
+        /**
+         *  Seed races
+         *      !! Table <races> will be cleared
+         */
+        $this->call(RaceSeeder::class);
     }
 }

@@ -15,11 +15,12 @@ class CreateRacesTable extends Migration
     {
         Schema::create('races', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('game_id')->nullable()->constrained('games')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('game_id')->constrained('games')->cascadeOnUpdate()->restrictOnDelete();
             $table->string('name');
-            $table->string('icon_url');
-            $table->string('picture_url');
-            $table->string('description');
+            $table->string('icon_url')->nullable();
+            $table->string('picture_url')->nullable();
+            $table->string('description')->nullable();
+
             $table->index('game_id');
             $table->unique(['game_id', 'name']);
         });
