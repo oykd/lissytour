@@ -13,9 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        \Schema::disableForeignKeyConstraints();
+
         /**
-         *  Seed users
+         *  Transfer users from old base
          *      !! Table <users> will be cleared
+         *      !! Table <profiles> will be cleared
          */
         $this->call(UserSeeder::class);
 
@@ -55,5 +58,7 @@ class DatabaseSeeder extends Seeder
          *      !! Table <races> will be cleared
          */
         $this->call(RaceSeeder::class);
+
+        \Schema::enableForeignKeyConstraints();
     }
 }

@@ -14,7 +14,7 @@ class TimezoneSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('timezones')->delete();
+        \DB::table('timezones')->truncate();
         Timezone::insert(['name' => 'Central European Time', 'symbol' => 'CET']);
         Timezone::insert(['name' => 'Russia, Moscow', 'symbol' => 'MSK']);
         Timezone::insert(['name' => 'Korea, Seoul', 'symbol' => 'KOR']);

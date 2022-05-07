@@ -14,7 +14,7 @@ class GameSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('games')->delete();
+        \DB::table('games')->truncate();
         Game::insert(['name' => 'StarCraft:BroodWar', 'short' => 'SC:BW']);
     }
 }

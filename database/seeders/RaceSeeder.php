@@ -14,9 +14,11 @@ class RaceSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('races')->delete();
+        \DB::table('races')->truncate();
         Race::insert(['game_id' => 1, 'name' => 'terran']);
         Race::insert(['game_id' => 1, 'name' => 'zerg']);
         Race::insert(['game_id' => 1, 'name' => 'protoss']);
+        Race::insert(['game_id' => 1, 'name' => 'random']);
+        Race::insert(['game_id' => 1, 'name' => 'none']);
     }
 }

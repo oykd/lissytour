@@ -14,7 +14,7 @@ class CurrencySeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('currencies')->delete();
+        \DB::table('currencies')->truncate();
         Currency::insert(['name' => 'United States Dollar', 'symbol' => '$', 'meta' => '']);
     }
 }

@@ -14,7 +14,7 @@ class TeamSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('teams')->delete();
+        \DB::table('teams')->truncate();
         Team::insert(['name' => 'master', 'description' => 'Default super-group for initial admin',]);
 
         \DB::table('team_entries')->truncate();
