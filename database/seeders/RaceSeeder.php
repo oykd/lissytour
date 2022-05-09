@@ -7,6 +7,8 @@ use App\Models\Race;
 
 class RaceSeeder extends Seeder
 {
+    const defaultRaces = ['terran', 'zerg', 'protoss', 'random', 'none'];
+
     /**
      * Run the database seeds.
      *
@@ -15,10 +17,8 @@ class RaceSeeder extends Seeder
     public function run()
     {
         \DB::table('races')->truncate();
-        Race::insert(['game_id' => 1, 'name' => 'terran']);
-        Race::insert(['game_id' => 1, 'name' => 'zerg']);
-        Race::insert(['game_id' => 1, 'name' => 'protoss']);
-        Race::insert(['game_id' => 1, 'name' => 'random']);
-        Race::insert(['game_id' => 1, 'name' => 'none']);
+
+        foreach (self::defaultRaces as $race)
+            Race::insert(['game_id' => 1, 'name' => $race]);
     }
 }

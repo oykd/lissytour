@@ -16,7 +16,6 @@ class UserSeeder extends Seeder
     {
         \DB::table('users')->truncate();
         \DB::table('profiles')->truncate();
-        //User::create(['name'=>'admin', 'email'=>'admin@admin.com', 'email_verified_at'=> now(), 'password'=> bcrypt('12345')]);
 
         \DB::connection('mysql_seed')
             ->table('user')
@@ -36,7 +35,7 @@ class UserSeeder extends Seeder
                     $profiles[] = [
                         'id' => $user->id,
                         'nickname' => $user->aka ?: null,
-                        'race_id' => (int)array_search($user->race, ['terran', 'zerg', 'protoss', 'random', 'none']) + 1,
+                        'race_id' => (int)array_search($user->race, RaceSeeder::defaultRaces) + 1,
                     ];
                 }
                 \DB::table('users')->insert($users);

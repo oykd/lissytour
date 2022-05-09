@@ -59,6 +59,13 @@ class DatabaseSeeder extends Seeder
          */
         $this->call(RaceSeeder::class);
 
+        /**
+         *  Transfer pages from old base
+         *  html => BBCodes
+         *      !! Table <pages> will be cleared
+         */
+        $this->call(PageSeeder::class);
+
         \Schema::enableForeignKeyConstraints();
     }
 }
