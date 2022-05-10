@@ -16,10 +16,11 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('picture_url');
-            $table->string('icon_url');
-            $table->string('description');
-            $table->unsignedInteger('page');
+            $table->string('tag')->unique();
+            $table->string('picture_url')->nullable();
+            $table->string('icon_url')->nullable();
+            $table->string('description')->nullable();
+            $table->unsignedInteger('page')->nullable();
             $table->foreign('page')->references('link')->on('pages')->cascadeOnUpdate()->restrictOnDelete();
         });
     }

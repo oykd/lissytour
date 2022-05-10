@@ -60,6 +60,12 @@ class DatabaseSeeder extends Seeder
         $this->call(RaceSeeder::class);
 
         /**
+         *  Seed categories
+         *      !! Table <categories> will be cleared
+         */
+        $this->call(CategorySeeder::class);
+
+        /**
          *  Transfer pages from old base
          *  html => BBCodes
          *      !! Table <pages> will be cleared
