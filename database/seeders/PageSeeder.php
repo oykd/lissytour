@@ -40,7 +40,7 @@ class PageSeeder extends Seeder
      */
     protected function replaceHtmlWithBBCodes(string $html): string
     {
-        $html = preg_replace('#<style>.*</style>#', '', $html);
+        $html = preg_replace('#<style>.*</style>#i', '', $html);
         $html = preg_replace('#<(/?)(b|i|u|DD|big|br|h[0-9])/?>#i', '[$1$2]', $html);
         $html = preg_replace('#<(/?)ul>#i', '[$1list]', $html);
         $html = preg_replace('#<li>#i', '[*]', $html);

@@ -16,7 +16,8 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('short')->nullable();
+            $table->string('short')->nullable()->unique();
+            $table->string('tag')->unique();
             $table->string('icon_url')->nullable();
             $table->string('picture_url')->nullable();
             $table->text('description')->nullable();

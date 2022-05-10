@@ -66,6 +66,14 @@ class DatabaseSeeder extends Seeder
          */
         $this->call(PageSeeder::class);
 
+        /**
+         *  Generate <maps> from files
+         *  .env => TRANSFER_MAP_FOLDER - path to the old map folder
+         *      !! Table <maps> will be cleared
+         *      !! Directory "/storage/app/public/maps/" will be overwritten
+         */
+        $this->call(MapSeeder::class);
+
         \Schema::enableForeignKeyConstraints();
     }
 }

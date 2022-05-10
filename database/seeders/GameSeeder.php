@@ -7,6 +7,8 @@ use App\Models\Game;
 
 class GameSeeder extends Seeder
 {
+    const scbw = 'scbw';
+
     /**
      * Run the database seeds.
      *
@@ -15,6 +17,6 @@ class GameSeeder extends Seeder
     public function run()
     {
         \DB::table('games')->truncate();
-        Game::insert(['name' => 'StarCraft:BroodWar', 'short' => 'SC:BW']);
+        Game::insert(['name' => 'StarCraft:BroodWar', 'short' => 'SC:BW', 'tag' => self::scbw]);
     }
 }

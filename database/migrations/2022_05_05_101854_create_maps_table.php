@@ -17,13 +17,14 @@ class CreateMapsTable extends Migration
             $table->id();
             $table->foreignId('game_id')->constrained('games')->cascadeOnUpdate()->restrictOnDelete();
             $table->string('name');
-            $table->string('version')->default('1.0');
+            $table->string('version')->nullable()->default('1.0');
+            $table->string('alt_version')->nullable();
             $table->string('picture')->nullable();
             $table->string('icon')->nullable();
             $table->text('description')->default('');
 
             $table->index('name');
-            $table->unique(['name', 'version']);
+            $table->unique(['name', 'version', 'alt_version']);
         });
     }
 
