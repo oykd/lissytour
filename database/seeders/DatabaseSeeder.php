@@ -80,6 +80,13 @@ class DatabaseSeeder extends Seeder
          */
         $this->call(MapSeeder::class);
 
+        /**
+         *  Generate <map_stacks> and <map_stack_entries> from old <tourney> table
+         *      !! Table <map_stacks> will be cleared
+         *      !! Table <map_stack_entries> will be cleared
+         */
+        $this->call(MapStackSeeder::class);
+
         \Schema::enableForeignKeyConstraints();
     }
 }

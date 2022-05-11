@@ -40,6 +40,13 @@ class MapSeeder extends Seeder
 
         \DB::table('maps')->truncate();
 
+        // <unknown> used in map_stack_entries, when map not found by name
+        \DB::table("maps")->insert([
+            'game_id' => 1,
+            'name' => 'unknown',
+            'version' => '-',
+        ]);
+
         $scbw = GameSeeder::scbw;
         \Storage::disk('public')->makeDirectory("maps/$scbw");
         $mapCounter = 0;
@@ -58,7 +65,7 @@ class MapSeeder extends Seeder
                 $name = $matches['name'];
                 $name[0] = strtoupper($name[0]);
                 $extension = $matches['ext'];
-                $version = $matches['version'] ?? null;
+                $version = $matches['version'] ?: null;
                 #$name = preg_replace('#\b([v|i|x]+)\b#ie', 'strtoupper("$0")', $name);
                 preg_match('#\b([v|i|x]+)\b#i', $name, $matches);
                 $altVersion = $matches[0] ?? null;

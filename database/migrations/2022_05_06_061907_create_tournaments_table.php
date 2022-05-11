@@ -16,6 +16,7 @@ class CreateTournamentsTable extends Migration
         Schema::create('tournaments', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            //$table->unsignedInteger('number')->nullable();
             $table->foreignId('creator_id')->nullable()->constrained('users')->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('game_id')->nullable()->constrained('games')->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('team_id')->nullable()->constrained('teams')->cascadeOnUpdate()->nullOnDelete();
@@ -32,8 +33,8 @@ class CreateTournamentsTable extends Migration
             $table->string('logo_url')->nullable();
             $table->string('rules_url')->nullable();
             $table->string('vod_url')->nullable();
-            $table->foreignId('mapstack_id')->constrained('map_stacks')->cascadeOnUpdate()->restrictOnDelete();
-            $table->enum('map_selection', ['FIRSTBYROUND', 'FIRSTBYREMOVING'])->default('FIRSTBYROUND');
+            $table->foreignId('mapstack_id')->nullable()->constrained('map_stacks')->cascadeOnUpdate()->restrictOnDelete();
+            $table->enum('map_selection', ['NONE', 'FIRSTBYROUND', 'FIRSTBYREMOVING', 'MAPBYTOUR'])->default('FIRSTBYROUND');
             $table->boolean('rated')->default(false);
             $table->integer('importance')->default(0);
             $table->foreignId('category_id')->constrained('categories')->cascadeOnUpdate()->restrictOnDelete();

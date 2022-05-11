@@ -17,6 +17,8 @@ class CreateMapStackEntriesTable extends Migration
             $table->id();
             $table->foreignId('stack_id')->constrained('map_stacks')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('map_id')->constrained('maps')->cascadeOnUpdate()->restrictOnDelete();
+
+            $table->index('stack_id');
         });
     }
 
