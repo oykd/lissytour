@@ -87,6 +87,12 @@ class DatabaseSeeder extends Seeder
          */
         $this->call(MapStackSeeder::class);
 
+        /**
+         *  Import <tournaments>
+         *      !! Table <tournaments> will be cleared
+         */
+        $this->call(TournamentSeeder::class);
+
         \Schema::enableForeignKeyConstraints();
     }
 }

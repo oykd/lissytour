@@ -15,7 +15,7 @@ class CreateTournamentsTable extends Migration
     {
         Schema::create('tournaments', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             //$table->unsignedInteger('number')->nullable();
             $table->foreignId('creator_id')->nullable()->constrained('users')->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('game_id')->nullable()->constrained('games')->cascadeOnUpdate()->nullOnDelete();
@@ -37,7 +37,7 @@ class CreateTournamentsTable extends Migration
             $table->enum('map_selection', ['NONE', 'FIRSTBYROUND', 'FIRSTBYREMOVING', 'MAPBYTOUR'])->default('FIRSTBYROUND');
             $table->boolean('rated')->default(false);
             $table->integer('importance')->default(0);
-            $table->foreignId('category_id')->constrained('categories')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('category_id')->nullable()->constrained('categories')->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId('chat_id')->nullable()->constrained('chats')->cascadeOnUpdate()->nullOnDelete();
             $table->string('password')->nullable();
 
