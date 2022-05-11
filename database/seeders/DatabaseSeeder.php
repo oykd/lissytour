@@ -93,6 +93,12 @@ class DatabaseSeeder extends Seeder
          */
         $this->call(TournamentSeeder::class);
 
+        /**
+         *  Import <players>
+         *      !! Table <players> will be cleared
+         */
+        $this->call(PlayerSeeder::class);
+
         \Schema::enableForeignKeyConstraints();
     }
 }

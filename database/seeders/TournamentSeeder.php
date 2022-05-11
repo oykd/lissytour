@@ -55,6 +55,7 @@ class TournamentSeeder extends Seeder
 
                     // add to insert list
                     $tournaments[] = [
+                        'id' => $tour->id,
                         'name' => $tour->name,
                         //'number' => null,
                         'creator_id' => $tour->admin_id ?: 1,

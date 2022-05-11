@@ -16,10 +16,10 @@ class CreatePlayersTable extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tournament_id')->constrained('tournaments')->cascadeOnUpdate()->restrictOnDelete();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnUpdate()->restrictOnDelete();
             $table->boolean('checkin')->default(false);
             $table->string('name')->nullable();
-            $table->boolean('banned')->default(false);
+            //$table->boolean('banned')->default(false);
             $table->foreignId('race_id')->nullable()->constrained('races')->cascadeOnUpdate()->restrictOnDelete();
 
             $table->index('tournament_id');
