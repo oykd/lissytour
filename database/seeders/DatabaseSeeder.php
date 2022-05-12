@@ -105,6 +105,14 @@ class DatabaseSeeder extends Seeder
          */
         $this->call(MatchSeeder::class);
 
+        /**
+         *  Import <replays>
+         *  .env => TRANSFER_REPLAY_FOLDER - path to the old replay folder
+         *      !! Table <replays> will be cleared
+         *      !! Directory "/storage/app/public/replays/" will be overwritten
+         */
+        $this->call(ReplaySeeder::class);
+
         \Schema::enableForeignKeyConstraints();
     }
 }

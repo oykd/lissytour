@@ -14,6 +14,11 @@ class MatchSeeder extends Seeder
      */
     public function run()
     {
+        if (!$this->command->confirm('Match seeding is a long process. Do you need it this time?', true)) {
+            $this->command->info("Match seeding cancelled by user");
+            return;
+        }
+
         \DB::table('matches')->truncate();
 
         $this->command->info('Importing matches...');
@@ -60,7 +65,7 @@ class MatchSeeder extends Seeder
                 foreach ($data as $match) {
                     $connections = ['winner' => $match->winner_goto, 'looser' => $match->looser_goto];
                     foreach ($connections as &$goto) {
-                        if ($goto === NULL) continue;
+                        if ($goto === null) continue;
                         $destination = Match::where(['tournament_id' => $match->tournament_id, 'line_id' => $goto])->first();
                         if (!$destination) {
                             $lost[] = [$match->tournament_id, $match->id, $goto];

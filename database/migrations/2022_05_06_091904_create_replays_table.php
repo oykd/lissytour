@@ -16,10 +16,10 @@ class CreateReplaysTable extends Migration
         Schema::create('replays', function (Blueprint $table) {
             $table->id();
             $table->string('filename');
-            $table->string('hash')->unique();
+            $table->string('hash')->nullable()->unique();
             $table->foreignId('match_id')->nullable()->constrained('matches')->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId('map_id')->nullable()->constrained('maps')->cascadeOnUpdate()->restrictOnDelete();
-            $table->unsignedTinyInteger('winner');
+            $table->unsignedTinyInteger('winner')->nullable();
 
             $table->index('match_id');
             $table->index('hash');
