@@ -40,6 +40,7 @@ class CreateTournamentsTable extends Migration
             $table->foreignId('category_id')->nullable()->constrained('categories')->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId('chat_id')->nullable()->constrained('chats')->cascadeOnUpdate()->nullOnDelete();
             $table->string('password')->nullable();
+            $table->unsignedInteger('limit')->nullable();
 
             $table->index('creator_id');
             $table->index('game_id');

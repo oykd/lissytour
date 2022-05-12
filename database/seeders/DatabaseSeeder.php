@@ -99,6 +99,12 @@ class DatabaseSeeder extends Seeder
          */
         $this->call(PlayerSeeder::class);
 
+        /**
+         *  Import <matches>
+         *      !! Table <matches> will be cleared
+         */
+        $this->call(MatchSeeder::class);
+
         \Schema::enableForeignKeyConstraints();
     }
 }

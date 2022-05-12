@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use App\Models\MapStack;
 
 class MapStackSeeder extends Seeder
 {
@@ -45,6 +46,13 @@ class MapStackSeeder extends Seeder
      */
     public function run()
     {
+        if (MapStack::all()->count() > 0) {
+            if(!$this->command->confirm('Map Stacks are not empty. Continue?',true)) {
+                $this->command->info("Map Stack seeding cancelled by user");
+                return;
+            }
+        }
+
         \DB::table('map_stacks')->truncate();
         \DB::table('map_stack_entries')->truncate();
 

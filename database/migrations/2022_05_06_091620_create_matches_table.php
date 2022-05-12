@@ -26,6 +26,7 @@ class CreateMatchesTable extends Migration
             $table->foreignId('looser_goto')->nullable()->constrained('matches')->cascadeOnUpdate()->restrictOnDelete();
             $table->unsignedSmallInteger('winner_top')->nullable();
             $table->unsignedSmallInteger('looser_top')->nullable();
+            $table->unsignedTinyInteger('walkover')->nullable();
 
             $table->index('tournament_id');
             $table->index('player1_id');
